@@ -1,29 +1,31 @@
-<div>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <label>
     Username:
-    <input type="text" [formControl]="username" />
+    <input type="text" formControlName="username" />
   </label>
   <label>
     Email:
-    <input type="text" [formControl]="email" />
+    <input type="text" formControlName="email" />
   </label>
   <label>
     Password:
-    <input type="password" [formControl]="password" />
+    <input type="password" formControlName="password" />
   </label>
   <label>
     Address:
-    <input type="text" [formControl]="address" />
+    <input type="text" formControlName="address" />
   </label>
-</div>
-<div>
-  <button type="submit" (click)="Submit()">Sign up</button>
-</div>
+  <div>
+    <button type="submit" [disabled]="!userForm.valid">Sign up</button>
+  </div>
+</form>
 
 <section *ngIf="submitted">
   <h2>User:</h2>
-  <p>Name: {{ username.value }}</p>
-  <p>Email: {{ email.value }}</p>
-  <p>Password: {{ password.value }}</p>
-  <p>Address: {{ address.value }}</p>
+  <ul>
+    <li *ngFor="let user of users">
+      Name: {{ user.username }} Email: {{ user.email }} Password:
+      {{ user.password }} Address: {{ user.address }}
+    </li>
+  </ul>
 </section>
