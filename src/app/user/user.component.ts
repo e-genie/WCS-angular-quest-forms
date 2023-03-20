@@ -8,16 +8,16 @@ import { User } from '../models/user.model';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  userForm: FormGroup;
+  userForm = this.fb.group({
+    username: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      zipCode: [''],
+    }),
+  });
 
-  constructor(private fb: FormBuilder) {
-    this.userForm = this.fb.group({
-      username: [''],
-      email: [''],
-      password: [''],
-      address: [''],
-    });
-  }
+  constructor(private fb: FormBuilder) {}
 
   submitted = false;
 
