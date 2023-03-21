@@ -8,8 +8,6 @@
       Address:
       <label>
         Street:
-        <!-- "street" correspond à la propriété street du FormGroup address
-                 contenu dans le FormGroup userForm -->
         <input type="text" formControlName="street" />
       </label>
     </div>
@@ -17,8 +15,6 @@
     <div>
       <label>
         City:
-        <!-- "city" correspond à la propriété city du FormGroup address
-                 contenu dans le FormGroup userForm -->
         <input type="text" formControlName="city" />
       </label>
     </div>
@@ -26,9 +22,23 @@
     <div>
       <label>
         Zip code:
-        <!-- "zipCode" correspond à la propriété zipCode du FormGroup address
-                 contenu dans le FormGroup userForm -->
         <input type="text" formControlName="zipCode" />
+      </label>
+    </div>
+  </div>
+  <div formGroupName="credentials">
+    <div>
+      Credentials:
+      <label>
+        Email:
+        <input type="text" formControlName="email" />
+      </label>
+    </div>
+
+    <div>
+      <label>
+        Password:
+        <input type="password" formControlName="password" />
       </label>
     </div>
   </div>
@@ -41,8 +51,9 @@
   <h2>User:</h2>
   <ul>
     <li *ngFor="let user of users">
-      Name: {{ user.username }} Address: {{ user.address.street }}
-      {{ user.address.city }} {{ user.address.zipCode }}
+      Name: {{ user.username }} Email: {{ user.credentials.email }} Address:
+      {{ user.address.street }} {{ user.address.city }}
+      {{ user.address.zipCode }}
     </li>
   </ul>
 </section>

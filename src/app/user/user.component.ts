@@ -10,6 +10,10 @@ import { User } from '../models/user.model';
 export class UserComponent {
   userForm = this.fb.group({
     username: [''],
+    credentials: this.fb.group({
+      email: [''],
+      password: [''],
+    }),
     address: this.fb.group({
       street: [''],
       city: [''],
@@ -26,11 +30,11 @@ export class UserComponent {
   onSubmit() {
     // Ajoute les données du formulaire au tableau users
     this.users.push(this.userForm.value);
+    console.log(this.userForm.value);
 
     // Réinitialise le formulaire
     this.userForm.reset();
 
     this.submitted = true;
-    console.log(this.userForm.value);
   }
 }
